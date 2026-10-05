@@ -1,0 +1,68 @@
+name: Local load check
+
+on:
+  workflow_dispatch:
+    inputs:
+      requests:
+        description: Requests per phase (16..100000)
+        required: true
+        default: '256'
+        type: number
+      concurrency:
+        description: Concurrent operations (8..256)
+        required: true
+        default: '32'
+        type: number
+
+permissions:
+  contents: read
+
+concurrency:
+  group: load-check-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  load:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          global-json-file: global.json
+      - name: Run local load scenarios
+        env:
+          LOAD_REQUESTS: ${{ inputs.requests }}
+          LOAD_CONCURRENCY: ${{ inputs.concurrency }}
+        run: |
+          $requestCount = 0
+          $concurrencyCount = 0
+          if (![int]::TryParse($env:LOAD_REQUESTS, [ref]$requestCount) -or ![int]::TryParse($env:LOAD_CONCURRENCY, [ref]$concurrencyCount)) {
+            throw 'Inputs must be integers'
+          }
+          ./samples/LoadCheck/run.ps1 -Requests $requestCount -Concurrency $concurrencyCount
+      - name: Add report to summary
+        if: always()
+        run: |
+          if (Test-Path -LiteralPath 'artifacts/load-check/report.md') {
+            Get-Content -LiteralPath 'artifacts/load-check/report.md' | Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY
+          }
+      - name: Upload load report and logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: load-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/load-check/**
+          if-no-files-found: warn
+          retention-days: 14

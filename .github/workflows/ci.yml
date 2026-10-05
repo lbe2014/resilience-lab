@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          global-json-file: global.json
+      - name: Restore
+        run: dotnet restore ResilienceLab.slnx
+      - name: Build Release
+        run: dotnet build ResilienceLab.slnx -c Release --no-restore -warnaserror
+      - name: Tests
+        run: dotnet test ResilienceLab.slnx -c Release --no-build --logger trx --results-directory artifacts/test-results/ci --blame-hang-timeout 30s --blame-hang-dump-type none
+      - name: Demo
+        run: dotnet run --project samples/Demo -c Release --no-build
+      - name: Local HTTP and trace checks
+        run: ./samples/FaultApi/verify.ps1 -Tracing
+      - name: Pack core
+        run: dotnet pack src/ResilienceLab -c Release --no-build -o artifacts/packages
+      - name: Pack HTTP
+        run: dotnet pack src/ResilienceLab.Http -c Release --no-build -o artifacts/packages
+      - name: Upload test results and HTTP logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: validation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts/test-results/ci/**
+            artifacts/fault-api/*.log
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload NuGet packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: nuget-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: error
+          retention-days: 14
