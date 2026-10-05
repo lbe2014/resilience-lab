@@ -15,6 +15,8 @@ Consulta [activación, métricas y ejemplos](OBSERVABILITY.md).
 Consulta [las estrategias adicionales y su composición](STRATEGIES.md).
 Consulta [pipelines reutilizables, orden y registro por nombre en DI](PIPELINES.md).
 Consulta [CI y carga manual con GitHub Actions](CI.md).
+Incluye una [API consumidora independiente](examples/PackageConsumer/README.md)
+que instala los .nupkg locales y verifica DI, pipeline y trazas sin ProjectReference.
 
 ## Ejecutar y empaquetar
 

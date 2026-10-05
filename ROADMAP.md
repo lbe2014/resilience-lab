@@ -1,5 +1,10 @@
 # Roadmap
 
+## Consumidor NuGet independiente
+- API separada de la solución con PackageReference a ambos paquetes 0.5.0.
+- Restauración desde feed local con cache dedicado y seis comprobaciones HTTP de DI/pipeline/trazas.
+- Verificación incluida en CI después del empaquetado; logs como artifacts.
+
 ## Integración continua
 - Workflows de GitHub Actions: CI para main/PR y carga manual con parámetros.
 - Resultados de pruebas, logs e informes y paquetes como artifacts; sin publicación NuGet.

@@ -5,6 +5,8 @@ El repositorio usa main y dos workflows para Windows:
 - CI: push a main, pull request o ejecución manual; restaura, compila Release con
   warnings como errores, ejecuta tests, doce demos, seis checks HTTP con tracing y
   genera ambos paquetes NuGet. Guarda TRX/logs y paquetes como artifacts por 14 días.
+  También compila y verifica examples/PackageConsumer desde los .nupkg generados,
+  usando un cache dedicado y guardando los logs del consumidor.
 - Local load check: sólo manual desde Actions → Run workflow; recibe requests y
   concurrency, ejecuta ocho fases contra su API localhost y guarda JSON/Markdown/logs.
   El informe también aparece en el resumen de la ejecución.
