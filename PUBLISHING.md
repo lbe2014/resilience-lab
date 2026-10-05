@@ -37,5 +37,6 @@ La action [NuGet/login](https://github.com/NuGet/login) maneja el intercambio OI
 Ambos paquetes 0.5.0 fueron aceptados el 2026-10-05 mediante
 [este workflow](https://github.com/lbe2014/resilience-lab/actions/runs/37350047486).
 La política aparece Active y ligada a los IDs permanentes del repositorio y propietario.
-La disponibilidad para instalar depende de la validación/indexación de NuGet.
+Ambos paquetes ya aparecen en el índice público. Se verificó restauración desde
+nuget.org como única fuente, compilación del consumidor y seis checks HTTP.
 No se creó un tag/release; el repositorio continúa privado.

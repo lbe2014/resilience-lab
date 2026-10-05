@@ -2,7 +2,7 @@
 
 ## Primera publicación NuGet
 - Ambos paquetes 0.5.0 enviados mediante OIDC; política permanentemente activa.
-- Pendiente disponibilidad tras indexación, instalación pública y tag/release.
+- Instalación pública verificada; pendiente tag/release.
 
 ## Consumidor NuGet independiente
 - API separada de la solución con PackageReference a ambos paquetes 0.5.0.

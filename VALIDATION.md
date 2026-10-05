@@ -126,6 +126,11 @@ carga ni una API externa. La versión de las DLL permanece en 0.3.0.
 - La versión de la biblioteca permanece en 0.5.0; no se publicó en NuGet.
 # Primera publicación NuGet (2026-10-05)
 
+Actualización: ambos IDs ya muestran 0.5.0 en flatcontainer. Consumidor independiente
+restaurado con nuget.org como única fuente y cache separado, compilado con SDK 10.0.401
+sin warnings/errores; seis checks HTTP aprobados (retry, timeout/fallback y circuito).
+Se observaron spans de resiliencia durante la ejecución. La API se detuvo al terminar.
+
 - Política resilience-lab creada en NuGet con autorización explícita del usuario,
   restringida a ResilienceLab y ResilienceLab.Http, workflow publish.yml.
 - Workflow 37350047486 aprobado: build/tests, consumidor NuGet, identidad/licencia,
@@ -134,5 +139,5 @@ carga ni una API externa. La versión de las DLL permanece en 0.3.0.
 - Política comprobada en la UI como Active, con propietario/repo ligados a IDs
   permanentes. Captura local artifacts/nuget-policy-active.jpg.
 - Tras el push, el índice flatcontainer y páginas públicas todavía devolvieron 404:
-  validación/indexación de NuGet pendiente. No se verificó instalación pública todavía.
+  la validación/indexación estaba pendiente entonces; completada y verificada arriba.
 - Repo sigue privado; no se creó tag ni release. Versión experimental, licencia MIT.
