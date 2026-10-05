@@ -1,0 +1,37 @@
+# Publicación NuGet mediante OIDC
+
+Primera versión propuesta: 0.5.0 experimental, paquetes ResilienceLab y
+ResilienceLab.Http, licencia MIT. Los nombres devolvieron 404 en el índice NuGet
+el 2026-10-05; eso no reserva IDs ni garantiza que no exista un prefijo reservado.
+
+La política de Trusted Publishing en NuGet.org debe coincidir con:
+
+| Campo | Valor |
+|---|---|
+| Policy Name | resilience-lab |
+| Package Owner | Lbe2014 |
+| Provider | GitHub Actions |
+| Repository Owner | lbe2014 |
+| Repository | resilience-lab |
+| Workflow File | publish.yml |
+| Environment | Vacío |
+| Permiso | Push new packages and package versions |
+| Paquetes | ResilienceLab y ResilienceLab.Http, en líneas independientes |
+
+No habilites unlist/relist ni un patrón comodín. La política autoriza a ese workflow
+a publicar esos dos paquetes bajo tu cuenta, mediante credenciales temporales.
+Para guardar la política hay que confirmar ese permiso. No requiere guardar una API key.
+
+En Actions, selecciona Prepare or publish NuGet y ejecútalo en main. `publish=false`
+es el valor inicial: compila, ejecuta tests, comprueba un consumidor de los paquetes
+y valida ID/versión/licencia, guardando artifacts sin solicitar credenciales OIDC.
+`publish=true` ejecuta además el job de publicación: pide un token temporal a NuGet
+y publica primero el núcleo y después HTTP. No se ejecuta al hacer push ni crear un PR.
+La publicación no es atómica: si sólo se publica el núcleo, vuelve a ejecutar;
+skip-duplicate permite continuar con HTTP. Los errores restantes detienen el job.
+
+El repo puede permanecer privado. Una política nueva de repo privado puede mostrar
+activación temporal por siete días hasta la primera publicación, según
+[la documentación de NuGet](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing).
+La action [NuGet/login](https://github.com/NuGet/login) maneja el intercambio OIDC.
+No se ha creado todavía un tag/release ni se han publicado los paquetes.

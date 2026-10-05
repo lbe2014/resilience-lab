@@ -1,0 +1,112 @@
+name: Prepare or publish NuGet
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish both packages to NuGet.org (otherwise validate only)
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nuget-publish
+  cancel-in-progress: false
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          global-json-file: global.json
+      - name: Build and test
+        run: |
+          dotnet build ResilienceLab.slnx -c Release -warnaserror
+          if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
+          dotnet test ResilienceLab.slnx -c Release --no-build --logger trx --results-directory artifacts/test-results/publish --blame-hang-timeout 30s --blame-hang-dump-type none
+          if ($LASTEXITCODE -ne 0) { throw 'Tests failed' }
+      - name: Verify packed NuGet consumer
+        run: ./examples/PackageConsumer/verify.ps1
+      - name: Verify package identities and MIT license
+        run: |
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $expected = @{ 'ResilienceLab' = '0.5.0'; 'ResilienceLab.Http' = '0.5.0' }
+          $packages = @(Get-ChildItem artifacts/packages/*.nupkg)
+          if ($packages.Count -ne 2) { throw 'Expected exactly two packages' }
+          foreach ($package in $packages) {
+            $zip = [System.IO.Compression.ZipFile]::OpenRead($package.FullName)
+            try {
+              $entry = @($zip.Entries | Where-Object FullName -Like '*.nuspec')[0]
+              $reader = [System.IO.StreamReader]::new($entry.Open())
+              try { [xml]$spec = $reader.ReadToEnd() } finally { $reader.Dispose() }
+              $metadata = $spec.package.metadata
+              if (!$expected.ContainsKey([string]$metadata.id) -or $metadata.version -ne $expected[[string]$metadata.id]) { throw 'Unexpected package identity/version' }
+              if ($metadata.license.InnerText -ne 'MIT' -or $metadata.license.type -ne 'expression') { throw 'MIT metadata missing' }
+            } finally { $zip.Dispose() }
+          }
+      - name: Upload validated packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: release-packages
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload validation logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: release-validation
+          path: |
+            artifacts/test-results/publish/**
+            artifacts/package-consumer/*.log
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish:
+    needs: prepare
+    if: inputs.publish && github.ref == 'refs/heads/main'
+    runs-on: windows-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          dotnet-version: '10.0.401'
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: release-packages
+          path: packages
+      - name: Authenticate to NuGet using OIDC
+        id: login
+        uses: NuGet/login@ebc737b6fc418a6ca0073cf116ec8dc156d8b81e # v1
+        with:
+          user: Lbe2014
+      - name: Publish core then HTTP
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push packages/ResilienceLab.0.5.0.nupkg --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          if ($LASTEXITCODE -ne 0) { throw 'Core publishing failed' }
+          dotnet nuget push packages/ResilienceLab.Http.0.5.0.nupkg --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+          if ($LASTEXITCODE -ne 0) { throw 'HTTP publishing failed' }

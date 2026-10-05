@@ -2,6 +2,8 @@
 
 Nombre del proyecto: **ResilienceLab**. Licencia: [MIT](LICENSE).
 Paquetes: `ResilienceLab` y `ResilienceLab.Http`.
+Estado: **experimental**; valida su comportamiento en tu aplicación antes de adoptarla.
+Consulta [preparación y publicación con OIDC](PUBLISHING.md).
 
 Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).
 Consulta [las ejecuciones de GitHub Actions](https://github.com/lbe2014/resilience-lab/actions)
