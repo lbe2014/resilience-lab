@@ -110,3 +110,17 @@ carga ni una API externa. La versión de las DLL permanece en 0.3.0.
   Tests, demo, HTTP/tracing y empaquetado completados, artifacts publicados.
 - Carga manual hospedada aprobada: https://github.com/lbe2014/resilience-lab/actions/runs/37346922144,
   perfil 256 solicitudes/concurrencia 32, informe y logs disponibles como artifacts.
+# Consumidor NuGet independiente (2026-10-05)
+
+- examples/PackageConsumer está fuera de ResilienceLab.slnx y sólo utiliza
+  PackageReference a ResilienceLab y ResilienceLab.Http 0.5.0.
+- Verificación local aprobada: restauración desde feed local, dependencias de tipo
+  package en assets, compilación Release sin warnings/errores, seis checks HTTP y
+  spans de pipeline, retry, HTTP, timeout, fallback y circuito.
+- Copia independiente en work/PackageConsumer-check restaurada y compilada con
+  SDK 10.0.401; no contiene src ni referencias a proyectos de la biblioteca.
+- El script de verificación crea un cache nuevo por ejecución para evitar reutilizar
+  una versión anterior del mismo paquete en el cache global o en un run previo.
+- CI aprobado en GitHub, incluido el consumidor y los 194 unit tests:
+  https://github.com/lbe2014/resilience-lab/actions/runs/37348008986.
+- La versión de la biblioteca permanece en 0.5.0; no se publicó en NuGet.

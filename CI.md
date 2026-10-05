@@ -22,6 +22,8 @@ Los comandos se probaron localmente y ambos workflows aprobaron en GitHub el 202
 [CI](https://github.com/lbe2014/resilience-lab/actions/runs/37346834705) y
 [carga manual](https://github.com/lbe2014/resilience-lab/actions/runs/37346922144).
 Las latencias del workload dependen de ese runner.
+La ampliación con consumidor NuGet independiente también aprobó en
+[CI](https://github.com/lbe2014/resilience-lab/actions/runs/37348008986).
 
 Referencias oficiales:
 [checkout](https://github.com/actions/checkout),
