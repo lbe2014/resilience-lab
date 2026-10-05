@@ -19,6 +19,23 @@ fallback, rate limiting, hedging, timeout cooperativo, circuit breaker y HTTP.
 Implementación propia; su API no es compatible
 con Polly. Funciona sin IA, claves ni servicios externos.
 
+## Instalar y probar
+
+En un proyecto .NET 10:
+
+```powershell
+dotnet add package ResilienceLab --version 0.5.0
+dotnet add package ResilienceLab.Http --version 0.5.0
+```
+
+Validación: 194 pruebas Release y doce demos. La API de catálogo añade doce
+escenarios HTTP reproducibles y exportación de trazas/métricas a un collector
+OpenTelemetry real. Consulta [resultados y límites](VALIDATION.md).
+Para empezar con una aplicación, sigue la [API de catálogo](examples/CatalogApi/README.md);
+para configurar estrategias, consulta [pipelines](PIPELINES.md).
+
+## Funciones y ejemplos
+
 Incluye observabilidad opcional con ILogger, métricas, eventos del circuito y ActivitySource.
 Consulta [trazas, jerarquía de spans y OpenTelemetry](TRACING.md).
 Consulta [activación, métricas y ejemplos](OBSERVABILITY.md).
@@ -235,6 +252,6 @@ no tiempos esperados de la estrategia.
 permiten comprobar el paso del tiempo sin esperar los retrasos reales.
 
 Abre la carpeta en Codex u OpenCode y pide que lea AGENTS.md y ROADMAP.md.
-El agente propio del blog queda pendiente; puedes usar los ejemplos y pruebas como
-material del primer artículo. Esta entrega no garantiza compatibilidad ni madurez
+La CLI propia de generación para el blog queda pendiente; el primer artículo
+ya está publicado y enlazado al inicio. Esta entrega no garantiza compatibilidad ni madurez
 equivalente a Polly; aún requiere validación en tu aplicación real.
