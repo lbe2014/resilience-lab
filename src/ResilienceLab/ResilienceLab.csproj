@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
     <Version>0.5.0</Version>
     <Authors>ResilienceLab contributors</Authors>
+    <PackageId>ResilienceLab</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/lbe2014/resilience-lab</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Description>Educational .NET resilience: result and exception retry, fallback, rate limiting, hedging, timeout and circuit breaker.</Description>
     <PackageTags>resilience;retry;timeout;circuit-breaker</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>

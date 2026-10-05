@@ -1,5 +1,8 @@
 # ResilienceLab 0.5.0
 
+Nombre del proyecto: **ResilienceLab**. Licencia: [MIT](LICENSE).
+Paquetes: `ResilienceLab` y `ResilienceLab.Http`.
+
 Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).
 Consulta [las ejecuciones de GitHub Actions](https://github.com/lbe2014/resilience-lab/actions)
 para descargar resultados e informes y paquetes generados por CI.

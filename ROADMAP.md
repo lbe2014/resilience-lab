@@ -43,7 +43,7 @@ de IA. El usuario revisará el texto antes de publicarlo.
 La elección del proveedor y las credenciales se resolverán al iniciar esa etapa.
 
 ## Otras mejoras posibles
-- Revisión de licencia y nombre disponibles antes de una publicación pública.
+- Nombre elegido: ResilienceLab; licencia MIT. Comprobar disponibilidad de los IDs en NuGet antes de publicar.
 - Integración y pruebas de carga con servicios reales.
 
 ## Muestra de integración local

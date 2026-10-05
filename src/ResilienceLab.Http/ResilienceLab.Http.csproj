@@ -4,6 +4,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>0.5.0</Version>
+    <PackageId>ResilienceLab.Http</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/lbe2014/resilience-lab</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Authors>ResilienceLab contributors</Authors>
     <Description>Reintentos HTTP con backoff, jitter, Retry-After, cancelación y registro tipado de IHttpClientFactory.</Description>
     <PackageTags>resilience;http;retry;dotnet</PackageTags>
