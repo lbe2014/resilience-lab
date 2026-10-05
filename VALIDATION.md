@@ -1,4 +1,23 @@
-# Validación de ResilienceLab 0.3.0
+# Validación de ResilienceLab
+
+## Estado actual: 0.5.0
+
+Validación completada el 2026-10-05 con SDK .NET 10.0.401: 194 pruebas Release
+(137 núcleo y 57 HTTP), doce escenarios de demo, seis comprobaciones del
+consumidor independiente y dos perfiles de carga local con diez comprobaciones
+por perfil. Restauración pública desde NuGet.org y seis llamadas del consumidor
+comprobadas. No se validaron servicios externos ni un collector OpenTelemetry.
+
+Ambos paquetes están publicados en NuGet.org. El repositorio es público y la
+[release experimental v0.5.0](https://github.com/lbe2014/resilience-lab/releases/tag/v0.5.0)
+adjunta los paquetes originales descargados del feed. El tag apunta al commit
+de publicación `d1fdde7`; los cambios posteriores de documentación no se
+reempaquetaron bajo la misma versión.
+
+Las secciones siguientes conservan el historial de validación. Las cifras y
+estados de publicación de versiones anteriores describen su fecha de ejecución.
+
+## Historial: 0.3.0
 
 Validado el 5 de octubre de 2026, Windows x64, SDK .NET 10.0.401.
 

@@ -1,8 +1,7 @@
 # Publicación NuGet mediante OIDC
 
-Primera versión propuesta: 0.5.0 experimental, paquetes ResilienceLab y
-ResilienceLab.Http, licencia MIT. Los nombres devolvieron 404 en el índice NuGet
-el 2026-10-05; eso no reserva IDs ni garantiza que no exista un prefijo reservado.
+Primera versión publicada: 0.5.0 experimental, paquetes ResilienceLab y
+ResilienceLab.Http, licencia MIT. Ambos IDs están disponibles públicamente.
 
 La política de Trusted Publishing en NuGet.org debe coincidir con:
 
@@ -39,4 +38,6 @@ Ambos paquetes 0.5.0 fueron aceptados el 2026-10-05 mediante
 La política aparece Active y ligada a los IDs permanentes del repositorio y propietario.
 Ambos paquetes ya aparecen en el índice público. Se verificó restauración desde
 nuget.org como única fuente, compilación del consumidor y seis checks HTTP.
-No se creó un tag/release; el repositorio continúa privado.
+El repositorio es público. La [release experimental v0.5.0](https://github.com/lbe2014/resilience-lab/releases/tag/v0.5.0)
+apunta al commit de publicación `d1fdde7` y adjunta los paquetes originales de
+NuGet.org. No se reempaquetaron cambios posteriores bajo la versión publicada.

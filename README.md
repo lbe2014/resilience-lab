@@ -9,6 +9,8 @@ Paquetes 0.5.0 enviados a NuGet.org mediante Trusted Publishing:
 Consulta [preparación y publicación con OIDC](PUBLISHING.md).
 
 Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).
+Release: [v0.5.0 experimental](https://github.com/lbe2014/resilience-lab/releases/tag/v0.5.0).
+Artículo: [ResilienceLab: construí una biblioteca de resiliencia para .NET 10](https://blog.lbe2014.com/articulos/resiliencialab-dotnet-resiliencia-observabilidad/).
 Consulta [las ejecuciones de GitHub Actions](https://github.com/lbe2014/resilience-lab/actions)
 para descargar resultados e informes y paquetes generados por CI.
 

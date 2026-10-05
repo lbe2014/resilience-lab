@@ -2,7 +2,8 @@
 
 ## Primera publicación NuGet
 - Ambos paquetes 0.5.0 enviados mediante OIDC; política permanentemente activa.
-- Instalación pública verificada; pendiente tag/release.
+- Instalación pública verificada; tag y release experimental v0.5.0 creados.
+- Repositorio público; la release conserva los paquetes publicados originales.
 
 ## Consumidor NuGet independiente
 - API separada de la solución con PackageReference a ambos paquetes 0.5.0.
@@ -41,19 +42,24 @@
 - Paquetes NuGet locales con README y metadatos.
 
 ## Próxima etapa: agente del blog
+El primer artículo ya está [publicado en LBE Tech](https://blog.lbe2014.com/articulos/resiliencialab-dotnet-resiliencia-observabilidad/),
+con edición y revisión independiente por subagentes, ejemplos compilados y portada.
+La CLI propia de generación sigue siendo una mejora independiente:
+
 Construir una CLI que lea archivos seleccionados y resultados de pruebas,
 genere un borrador Markdown con referencias al código y permita elegir el proveedor
 de IA. El usuario revisará el texto antes de publicarlo.
 La elección del proveedor y las credenciales se resolverán al iniciar esa etapa.
 
 ## Otras mejoras posibles
-- Nombre elegido: ResilienceLab; licencia MIT. Comprobar disponibilidad de los IDs en NuGet antes de publicar.
+- Nombre ResilienceLab y licencia MIT; ambos IDs publicados en NuGet.org.
 - Integración y pruebas de carga con servicios reales.
 
 ## Muestra de integración local
 - API ASP.NET Core con dependencia simulada y cliente tipado IHttpClientFactory.
 - Recuperación tras 503, timeout, fallback y circuito compartido entre solicitudes.
-- Seis verificaciones HTTP locales aprobadas; pendiente carga y servicios externos.
+- Seis verificaciones HTTP locales y dos perfiles de carga local aprobados;
+  pendiente validación contra servicios externos.
 
 ## Implementado en 0.2.0
 - Telemetry opcional compartida por dependencia, ILogger y cinco instrumentos de métricas.
