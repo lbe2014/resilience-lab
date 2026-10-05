@@ -103,5 +103,10 @@ carga ni una API externa. La versión de las DLL permanece en 0.3.0.
   doce demos, seis checks HTTP con tracing y ambos paquetes en artifacts/packages.
 - Actions fijadas a commits de checkout v7, setup-dotnet v6 y upload-artifact v7;
   refs comprobadas con git ls-remote. Permisos contents: read; sin publicación NuGet.
-- Pendiente crear/subir el repositorio y verificar un run hospedado: GitHub CLI
-  no tiene aún una sesión autenticada. No se cambió la identidad global de Git.
+- Repositorio privado creado y subido: https://github.com/lbe2014/resilience-lab,
+  rama principal main. Identidad local configurada con correo noreply de GitHub;
+  no se cambió la identidad global de Git.
+- CI hospedado aprobado: https://github.com/lbe2014/resilience-lab/actions/runs/37346834705.
+  Tests, demo, HTTP/tracing y empaquetado completados, artifacts publicados.
+- Carga manual hospedada aprobada: https://github.com/lbe2014/resilience-lab/actions/runs/37346922144,
+  perfil 256 solicitudes/concurrencia 32, informe y logs disponibles como artifacts.

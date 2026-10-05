@@ -1,5 +1,9 @@
 # ResilienceLab 0.5.0
 
+Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).
+Consulta [las ejecuciones de GitHub Actions](https://github.com/lbe2014/resilience-lab/actions)
+para descargar resultados e informes y paquetes generados por CI.
+
 Biblioteca educativa de resiliencia para .NET 10: Retry por errores y resultados,
 fallback, rate limiting, hedging, timeout cooperativo, circuit breaker y HTTP.
 Implementación propia; su API no es compatible

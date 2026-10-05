@@ -16,8 +16,10 @@ deliberadamente; el workflow no se actualiza automáticamente con un tag mutable
 
 Sólo se solicita contents: read y checkout no conserva credenciales. No hay pasos
 de publicación NuGet, releases o despliegue; no requiere secretos configurados.
-Los comandos run se probaron localmente; una ejecución en GitHub es la validación
-final del runner hospedado. Las latencias del workload dependen de ese runner.
+Los comandos se probaron localmente y ambos workflows aprobaron en GitHub el 2026-10-05:
+[CI](https://github.com/lbe2014/resilience-lab/actions/runs/37346834705) y
+[carga manual](https://github.com/lbe2014/resilience-lab/actions/runs/37346922144).
+Las latencias del workload dependen de ese runner.
 
 Referencias oficiales:
 [checkout](https://github.com/actions/checkout),
