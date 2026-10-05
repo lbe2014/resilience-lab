@@ -49,6 +49,8 @@ jobs:
         run: dotnet pack src/ResilienceLab.Http -c Release --no-build -o artifacts/packages
       - name: Verify standalone NuGet consumer
         run: ./examples/PackageConsumer/verify.ps1
+      - name: Verify catalog API and fallback cache
+        run: ./examples/CatalogApi/verify.ps1
       - name: Upload test results and HTTP logs
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -58,6 +60,7 @@ jobs:
             artifacts/test-results/ci/**
             artifacts/fault-api/*.log
             artifacts/package-consumer/*.log
+            artifacts/catalog-api/*.log
           if-no-files-found: warn
           retention-days: 14
       - name: Upload NuGet packages

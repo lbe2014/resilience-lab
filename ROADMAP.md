@@ -1,6 +1,10 @@
 # Roadmap
 
 ## Primera publicación NuGet
+La [API de catálogo](examples/CatalogApi/README.md) incorpora una consulta externa,
+caché de último resultado válido y exportación a collector OTLP. Su verificación
+reproduce doce escenarios HTTP; sigue pendiente carga prolongada.
+
 - Ambos paquetes 0.5.0 enviados mediante OIDC; política permanentemente activa.
 - Instalación pública verificada; tag y release experimental v0.5.0 creados.
 - Repositorio público; la release conserva los paquetes publicados originales.

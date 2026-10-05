@@ -6,7 +6,8 @@ Validación completada el 2026-10-05 con SDK .NET 10.0.401: 194 pruebas Release
 (137 núcleo y 57 HTTP), doce escenarios de demo, seis comprobaciones del
 consumidor independiente y dos perfiles de carga local con diez comprobaciones
 por perfil. Restauración pública desde NuGet.org y seis llamadas del consumidor
-comprobadas. No se validaron servicios externos ni un collector OpenTelemetry.
+comprobadas. La validación inicial no incluía servicios externos ni un collector;
+la ampliación CatalogApi se documenta a continuación.
 
 Ambos paquetes están publicados en NuGet.org. El repositorio es público y la
 [release experimental v0.5.0](https://github.com/lbe2014/resilience-lab/releases/tag/v0.5.0)
@@ -16,6 +17,20 @@ reempaquetaron bajo la misma versión.
 
 Las secciones siguientes conservan el historial de validación. Las cifras y
 estados de publicación de versiones anteriores describen su fecha de ejecución.
+
+## API de catálogo: ampliación 2026-10-05
+
+CatalogApi usa ambos paquetes públicos 0.5.0 y OpenTelemetry .NET. Build Release
+sin advertencias. Doce escenarios HTTP aprobados contra proveedor separado:
+caché fría/vencida, retry, timeout, fallback, circuito abierto/recuperación,
+errores permanentes y cancelación sin handlers pendientes. Collector oficial
+0.162.0 recibió spans de pipeline, intentos, fallback y métricas retry/fallback
+por OTLP HTTP. Logs en artifacts/catalog-api/collector.log.
+
+Consulta real a DummyJSON: HTTP200, diez productos, total194 e isStale=false.
+Respuesta guardada en artifacts/catalog-api/external-catalog.json. Se repitieron
+194 pruebas de DLL y doce demos: todo aprobado. La aplicación no altera los
+paquetes publicados. Sigue pendiente estabilidad prolongada y carga externa.
 
 ## Historial: 0.3.0
 

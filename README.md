@@ -27,6 +27,8 @@ Consulta [pipelines reutilizables, orden y registro por nombre en DI](PIPELINES.
 Consulta [CI y carga manual con GitHub Actions](CI.md).
 Incluye una [API consumidora independiente](examples/PackageConsumer/README.md)
 que instala los .nupkg locales y verifica DI, pipeline y trazas sin ProjectReference.
+La [API de catálogo](examples/CatalogApi/README.md) consume NuGet.org y DummyJSON,
+con caché de respaldo real, fallos HTTP reproducibles y un collector OTLP local.
 
 ## Ejecutar y empaquetar
 

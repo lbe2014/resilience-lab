@@ -1,0 +1,9 @@
+services:
+  collector:
+    image: otel/opentelemetry-collector:0.162.0@sha256:310a800ad69ee430e7c541796852a242c9c7db97aaad4daa5ccf843c525fbdb2
+    command: ["--config=/etc/otelcol/config.yaml"]
+    ports:
+      - "127.0.0.1:4318:4318"
+    volumes:
+      - ./collector.yaml:/etc/otelcol/config.yaml:ro
+    mem_limit: 256m
