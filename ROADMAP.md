@@ -1,5 +1,9 @@
 # Roadmap
 
+## Primera publicación NuGet
+- Ambos paquetes 0.5.0 enviados mediante OIDC; política permanentemente activa.
+- Pendiente disponibilidad tras indexación, instalación pública y tag/release.
+
 ## Consumidor NuGet independiente
 - API separada de la solución con PackageReference a ambos paquetes 0.5.0.
 - Restauración desde feed local con cache dedicado y seis comprobaciones HTTP de DI/pipeline/trazas.

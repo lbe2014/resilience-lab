@@ -124,3 +124,15 @@ carga ni una API externa. La versión de las DLL permanece en 0.3.0.
 - CI aprobado en GitHub, incluido el consumidor y los 194 unit tests:
   https://github.com/lbe2014/resilience-lab/actions/runs/37348008986.
 - La versión de la biblioteca permanece en 0.5.0; no se publicó en NuGet.
+# Primera publicación NuGet (2026-10-05)
+
+- Política resilience-lab creada en NuGet con autorización explícita del usuario,
+  restringida a ResilienceLab y ResilienceLab.Http, workflow publish.yml.
+- Workflow 37350047486 aprobado: build/tests, consumidor NuGet, identidad/licencia,
+  autenticación OIDC y push de ambos paquetes 0.5.0. Los logs confirmaron dos
+  mensajes Your package was pushed. No se guardó una API key permanente.
+- Política comprobada en la UI como Active, con propietario/repo ligados a IDs
+  permanentes. Captura local artifacts/nuget-policy-active.jpg.
+- Tras el push, el índice flatcontainer y páginas públicas todavía devolvieron 404:
+  validación/indexación de NuGet pendiente. No se verificó instalación pública todavía.
+- Repo sigue privado; no se creó tag ni release. Versión experimental, licencia MIT.

@@ -3,6 +3,9 @@
 Nombre del proyecto: **ResilienceLab**. Licencia: [MIT](LICENSE).
 Paquetes: `ResilienceLab` y `ResilienceLab.Http`.
 Estado: **experimental**; valida su comportamiento en tu aplicación antes de adoptarla.
+Paquetes 0.5.0 enviados a NuGet.org mediante Trusted Publishing:
+[ResilienceLab](https://www.nuget.org/packages/ResilienceLab/0.5.0) y
+[ResilienceLab.Http](https://www.nuget.org/packages/ResilienceLab.Http/0.5.0).
 Consulta [preparación y publicación con OIDC](PUBLISHING.md).
 
 Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).

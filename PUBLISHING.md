@@ -34,4 +34,8 @@ El repo puede permanecer privado. Una política nueva de repo privado puede most
 activación temporal por siete días hasta la primera publicación, según
 [la documentación de NuGet](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing).
 La action [NuGet/login](https://github.com/NuGet/login) maneja el intercambio OIDC.
-No se ha creado todavía un tag/release ni se han publicado los paquetes.
+Ambos paquetes 0.5.0 fueron aceptados el 2026-10-05 mediante
+[este workflow](https://github.com/lbe2014/resilience-lab/actions/runs/37350047486).
+La política aparece Active y ligada a los IDs permanentes del repositorio y propietario.
+La disponibilidad para instalar depende de la validación/indexación de NuGet.
+No se creó un tag/release; el repositorio continúa privado.
