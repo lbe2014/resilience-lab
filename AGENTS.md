@@ -33,5 +33,3 @@ Para cambios de distribución, empaqueta ambos proyectos en artifacts.
 Usa FakeTimeProvider, aleatoriedad controlada y TaskCompletionSource en pruebas.
 Evita depender de servicios externos, azar o tiempos exactos reales.
 No alteres archivos de otros agentes mientras trabajen; reparte archivos y acuerda APIs primero.
-
-El futuro agente del blog generará borradores basados en código y pruebas verificadas.

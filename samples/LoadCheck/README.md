@@ -51,7 +51,7 @@ y una prueba de recuperación fuera de las ocho fases tabuladas.
 - artifacts/load-check/report.json: configuración, runtime, resultados, errores por
   tipo, p50/p95/p99, llamadas/s, intentos, handlers iniciados/terminados/cancelados,
   tareas cliente y spans iniciados/terminados. `passed` identifica el éxito completo.
-- artifacts/load-check/report.md: tabla para revisar o utilizar como material del blog.
+- artifacts/load-check/report.md: tabla para revisar los resultados de la carga local.
 - server.log y server-errors.log: salida de la API.
 
 ActivityListener captura todas las trazas de resiliencia, contando sus aperturas y

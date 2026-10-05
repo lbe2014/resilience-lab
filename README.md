@@ -10,7 +10,6 @@ Consulta [preparación y publicación con OIDC](PUBLISHING.md).
 
 Repositorio: [lbe2014/resilience-lab](https://github.com/lbe2014/resilience-lab).
 Release: [v0.5.0 experimental](https://github.com/lbe2014/resilience-lab/releases/tag/v0.5.0).
-Artículo: [ResilienceLab: construí una biblioteca de resiliencia para .NET 10](https://blog.lbe2014.com/articulos/resiliencialab-dotnet-resiliencia-observabilidad/).
 Consulta [las ejecuciones de GitHub Actions](https://github.com/lbe2014/resilience-lab/actions)
 para descargar resultados e informes y paquetes generados por CI.
 
@@ -252,6 +251,5 @@ no tiempos esperados de la estrategia.
 permiten comprobar el paso del tiempo sin esperar los retrasos reales.
 
 Abre la carpeta en Codex u OpenCode y pide que lea AGENTS.md y ROADMAP.md.
-La CLI propia de generación para el blog queda pendiente; el primer artículo
-ya está publicado y enlazado al inicio. Esta entrega no garantiza compatibilidad ni madurez
+Esta entrega no garantiza compatibilidad ni madurez
 equivalente a Polly; aún requiere validación en tu aplicación real.

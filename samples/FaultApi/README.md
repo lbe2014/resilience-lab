@@ -50,5 +50,5 @@ pwsh -File samples/FaultApi/verify.ps1
 El script compila, arranca su propia instancia, comprueba seis llamadas HTTP y
 detiene el proceso al terminar. Guarda logs en `artifacts/fault-api`.
 Estos checks comprueban integración local; no son una prueba de carga ni una
-validación de una dependencia externa. Para el blog, muestra primero los 503,
-después la recuperación y finalmente cómo el circuito evita nuevos intentos.
+validación de una dependencia externa. Los escenarios muestran los 503,
+la recuperación y cómo el circuito evita nuevos intentos.

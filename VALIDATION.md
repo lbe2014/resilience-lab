@@ -77,7 +77,7 @@ Las pruebas controlan tiempo y azar; los escenarios HTTP usan handlers simulados
 Esto no constituye una prueba de carga, compatibilidad con servidores reales
 o paridad con Polly. Timeout y hedging requieren cooperación con cancelación.
 Rate limiting usa limitadores de .NET en el proceso, sin presupuesto distribuido.
-La publicación pública y el agente del blog quedan pendientes según ROADMAP.md.
+Consulta ROADMAP.md para las mejoras pendientes.
 # Integración HTTP local adicional (2026-10-05)
 
 `pwsh -NoProfile -File samples/FaultApi/verify.ps1` compiló sin warnings ni errores

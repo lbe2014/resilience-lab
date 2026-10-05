@@ -45,16 +45,6 @@ reproduce doce escenarios HTTP; sigue pendiente carga prolongada.
 - Demo local de seis escenarios y prueba de composición.
 - Paquetes NuGet locales con README y metadatos.
 
-## Próxima etapa: agente del blog
-El primer artículo ya está [publicado en LBE Tech](https://blog.lbe2014.com/articulos/resiliencialab-dotnet-resiliencia-observabilidad/),
-con edición y revisión independiente por subagentes, ejemplos compilados y portada.
-La CLI propia de generación sigue siendo una mejora independiente:
-
-Construir una CLI que lea archivos seleccionados y resultados de pruebas,
-genere un borrador Markdown con referencias al código y permita elegir el proveedor
-de IA. El usuario revisará el texto antes de publicarlo.
-La elección del proveedor y las credenciales se resolverán al iniciar esa etapa.
-
 ## Otras mejoras posibles
 - Nombre ResilienceLab y licencia MIT; ambos IDs publicados en NuGet.org.
 - Integración y pruebas de carga con servicios reales.
